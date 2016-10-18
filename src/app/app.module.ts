@@ -1,4 +1,4 @@
-import { NgModule, } from '@angular/core';
+import {NgModule, ViewContainerRef,} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -27,6 +27,17 @@ import { GoogleBooksService } from './services/google-books';
 import { routes } from './routes';
 import { reducer } from './reducers';
 import { schema } from './db';
+import {RudolfCubesService} from "./services/rudolf-cubes";
+import {CollectionCubePageComponent} from "./containers/cube/collection-page";
+import {ViewCubePageComponent} from "./containers/cube/view-cube-page";
+import {FindCubePageComponent} from "./containers/cube/find-cube-page";
+import {SelectedCubePageComponent} from "./containers/cube/selected-cube-page";
+import {CubeExistsGuard} from "./guards/cube-exists";
+import {CubeEffects} from "./effects/cube";
+import {TreeExecution} from "./services/tree-execution";
+import {AlgorithmsService} from "./services/algorithms";
+import {CubeAnalyticsPage} from "./containers/cube/cube-analytics";
+import {AnalysisService} from "./services/analysis";
 
 
 
@@ -57,10 +68,10 @@ import { schema } from './db';
      * Store devtools instrument the store retaining past versions of state
      * and recalculating new states. This enables powerful time-travel
      * debugging.
-     * 
+     *
      * To use the debugger, install the Redux Devtools extension for either
      * Chrome or Firefox
-     * 
+     *
      * See: https://github.com/zalmoxisus/redux-devtools-extension
      */
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
@@ -71,6 +82,7 @@ import { schema } from './db';
      *
      * See: https://github.com/ngrx/effects/blob/master/docs/api.md#run
      */
+    EffectsModule.run(CubeEffects),
     EffectsModule.run(BookEffects),
     EffectsModule.run(CollectionEffects),
 
@@ -86,14 +98,26 @@ import { schema } from './db';
     SelectedBookPageComponent,
     ViewBookPageComponent,
     CollectionPageComponent,
-    NotFoundPageComponent
+    FindCubePageComponent,
+    SelectedCubePageComponent,
+    ViewCubePageComponent,
+    CubeAnalyticsPage,
+    CollectionCubePageComponent,
+    NotFoundPageComponent,
+
   ],
   providers: [
     BookExistsGuard,
-    GoogleBooksService
+    CubeExistsGuard,
+    GoogleBooksService,
+    RudolfCubesService,
+    TreeExecution,
+    AlgorithmsService,
+    AnalysisService
   ],
   bootstrap: [
     AppComponent
   ]
 })
-export class AppModule { }
+export class AppModule {
+}

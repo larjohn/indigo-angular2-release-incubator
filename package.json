@@ -1,11 +1,12 @@
 {
-  "name": "@ngrx/example-app",
+  "name": "@obeu/indigo",
   "version": "1.0.0",
-  "description": "Example application demoing the @ngrx platform",
+  "description": "An indicators and analytics app for OpenBudgets.eu",
   "main": "index.ts",
   "scripts": {
     "build": "webpack -p --env.prod",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server --host 0.0.0.0 ",
+    "startDebug": "webpack-dev-server  --host 0.0.0.0 "
   },
   "repository": {
     "type": "git",
@@ -33,20 +34,28 @@
     "@angular/platform-browser-dynamic": "^2.0.0",
     "@angular/platform-server": "^2.0.0",
     "@angular/router": "^3.0.0",
-    "@ngrx/core": "^1.0.0",
+    "@ngrx/core": "^1.0.1",
     "@ngrx/db": "^2.0.0",
     "@ngrx/effects": "^2.0.0",
     "@ngrx/router-store": "^1.1.0",
-    "@ngrx/store": "^2.0.0",
+    "@ngrx/store": "^2.0.1",
     "@ngrx/store-devtools": "^3.1.0",
+    "angular2-prettyjson": "^1.0.5",
     "core-js": "^2.2.2",
+    "d3": "^3.5.17",
+    "jquery": "^3.1.1",
+    "lodash": "4.13.1",
+    "ng2-bootstrap": "^1.1.13",
     "ngrx-store-freeze": "^0.1.0",
     "rxjs": "^5.0.0-beta.12",
+    "underscore": "^1.8.3",
     "zone.js": "^0.6.12"
   },
   "devDependencies": {
     "@ngtools/webpack": "^1.0.0",
     "@types/hammerjs": "^2.0.32",
+    "@types/jquery": "^2.0.33",
+    "angular2-template-loader": "^0.5.0",
     "awesome-typescript-loader": "^2.2.4",
     "codelyzer": "^0.0.19",
     "cpy-cli": "^1.0.1",
